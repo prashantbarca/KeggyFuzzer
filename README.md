@@ -1,8 +1,6 @@
 # KeggyFuzzer
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/KeggyFuzzer`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Generating fuzzers from Hammer Ruby objects.
 
 ## Installation
 
@@ -22,7 +20,12 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'KeggyFuzzer'
+fuzzer_generator = KeggyFuzzer.new(@hammer_parser_object, MAX_LENGTH)
+```
+
+Depending on the size of the dataset, it could take minutes/hours/days/years to generate all possibilities.
 
 ## Development
 
