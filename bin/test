@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "KeggyFuzzer"
+
+@hammer = Hammer::Parser
+parser = @hammer.sequence(@hammer.many(@hammer.in("abcd")),
+                          @hammer.token("defg"),
+                          @hammer.end_p)
+fuzz = KeggyFuzzer::KeggyFuzzer.new(parser, 10)
