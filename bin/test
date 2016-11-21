@@ -1,10 +1,12 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "KeggyFuzzer"
+require 'bundler/setup'
+require 'KeggyFuzzer'
 
 @hammer = Hammer::Parser
-parser = @hammer.sequence(@hammer.many(@hammer.in("abcd")),
-                          @hammer.token("defg"),
+parser = @hammer.sequence(@hammer.token('defg'),
+                          @hammer.many1(@hammer.ch_range('c', 'z')),
+                          @hammer.ch_range('a', 'z'),
                           @hammer.end_p)
 fuzz = KeggyFuzzer::KeggyFuzzer.new(parser, 10)
+puts fuzz.testcases.inspect.length
