@@ -18,5 +18,18 @@ module KeggyFuzzer
         @testcases = KeggyRecurse.new.caller(@hammer)
       end
     end                         # End initialize
+
+    #
+    def test_parsers
+      failed_cases = []
+      @testcases.each do |testcase|
+        if @hammer.parse(testcase).nil?
+          failed_cases.push(testcase)
+        end
+      end
+      if failed_cases.empty?
+        puts "Keggy Fuzzer generated accurate parsers.... DONE"
+      end
+    end                         # End test
   end                           # End Class
 end                             # End Module

@@ -4,9 +4,8 @@ require 'bundler/setup'
 require 'KeggyFuzzer'
 
 @hammer = Hammer::Parser
-parser = @hammer.sequence(@hammer.token('defg'),
+parser = @hammer.sequence(@hammer.token("defg"),
                           @hammer.many1(@hammer.ch_range('c', 'z')),
-                          @hammer.ch_range('a', 'z'),
                           @hammer.end_p)
 fuzz = KeggyFuzzer::KeggyFuzzer.new(parser, 10)
-puts fuzz.testcases.inspect.length
+fuzz.test_parsers
