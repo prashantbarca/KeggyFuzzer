@@ -38,14 +38,34 @@ module KeggyFuzzer
       poss
     end
 
+    # # hammer.optional
+    # def optional(args)
+    #   if args.name == :optional
+    #     poss = [""]
+    #     args.dont_gc.each do |d|
+    #       poss = poss + d
+    #     end
+    #   end
+    # end
+
+    # hammer.choice
+    def choice(args)
+      if args.name == :choice
+      end
+    end
+
     # hammer.middle
     def middle(args)
+      if args.name == :middle
+        
+      end
     end
     
+    public
+
     # The static method that gets called from outside.
     # Should verify if it is the Hammer::Parser method.
 
-    public
 
     def caller(args)
       # puts args.inspect
@@ -66,7 +86,7 @@ module KeggyFuzzer
       elsif args.name == :action
         caller(args.dont_gc.first)
       elsif args.name == :ch
-        args.dont_gc.first
+        [args.dont_gc.first]
       elsif args.name == :many
         many(caller(args.dont_gc.first))
       elsif args.name == :many1
@@ -81,6 +101,21 @@ module KeggyFuzzer
         args.dont_gc.first.split('')
       elsif args.name == :end_p
         ['']
+      elsif args.name == :optional
+        poss = [""]
+        poss + caller(args.dont_gc.first)
+      elsif args.name == :choice
+        poss = []
+        args.dont_gc.each do |choice|
+          poss = poss + caller(choice)
+        end
+        poss
+      elsif args.name == :middle
+        zeroth = caller(args.dont_gc[0])
+        first = caller(args.dont_gc[1])
+        second = caller(args.dont_gc[2])
+        poss = zeroth.map {|x| first.map {|y| second.map {|z| x + y + z} } }.flatten
+        poss
       end
     end
   end

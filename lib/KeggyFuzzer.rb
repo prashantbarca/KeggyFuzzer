@@ -24,11 +24,14 @@ module KeggyFuzzer
       failed_cases = []
       @testcases.each do |testcase|
         if @hammer.parse(testcase).nil?
+          puts "#{testcase} didn't pass"
           failed_cases.push(testcase)
         end
       end
       if failed_cases.empty?
-        puts "Keggy Fuzzer generated accurate parsers.... DONE"
+        true
+      else
+        false
       end
     end                         # End test
   end                           # End Class
