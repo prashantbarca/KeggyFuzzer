@@ -1,5 +1,7 @@
 # KeggyFuzzer
 
+*THIS IS A WORK IN PROGRESS! I WILL REMOVE THIS LINE WHEN IT IS SAFE AND RELIABLE TO USE!*
+
 Generating fuzzers from Hammer Ruby objects.
 
 ## Installation
