@@ -3,7 +3,7 @@
 # prashant, 2017-10-14 15:37
 #
 
-GENERATOR=ch ch_range
+GENERATOR=sequence ch_range
 CC=clang++
 FLAGS=-lhammer `pkg-config --libs --cflags glib-2.0` -g
 
@@ -12,6 +12,7 @@ all:
 	ar rcs libkeggyfuzzer.a *.o
 
 clean:
+	rm $(foreach var,$(GENERATOR), $(var).o)
 	rm libkeggyfuzzer.a
 
 # vim:ft=make

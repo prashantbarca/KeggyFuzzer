@@ -10,6 +10,6 @@ using namespace std;
 char* g_ch_range(char c1, char c2)
 {
 	char* random;
-    cout<<"random_ch_range";
+    cout<<"In ch_range"<<endl;
 	return random;
 }
