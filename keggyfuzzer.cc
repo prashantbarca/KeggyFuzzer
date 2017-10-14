@@ -27,26 +27,21 @@
 #include <cassert>
 #include <stdint.h>
 #include "keggyfuzzer.h"
+#include "generators/ch_range.h"
+#include "generators/ch.h"
 using namespace std;
 
-typedef vector< int > vi; 
-typedef vector< vi > vvi;
-typedef vector< string > vs;
-typedef pair<int,int> ii; 
-#define sz(a) int((a).size()) 
-#define pb push_back 
-#define mp make_pair
-#define all(c) (c).begin(),(c).end() 
-#define tr(c,i) for(typeof((c).begin()) i = (c).begin(); i != (c).end(); i++) 
-#define present(c,x) ((c).find(x) != (c).end()) 
-#define cpresent(c,x) (find(all(c),x) != (c).end()) 
-#define For(i, a, b) for(int i = (a), _b = (b); i < _b; i++)
-#define Rep(i, n) For(i, 0, n)
+void generator(HParser* parser)
+{
+	
+}
 
 int main(void) {
+	HParser* parser = init_parser();
+	generator(parser);
 	uint8_t *Data;
 	size_t size;
-	target(Data, size);
+	g_ch_range('c','d');
     return 0;
 }
 
